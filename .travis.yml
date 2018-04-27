@@ -1,0 +1,27 @@
+language: bash
+sudo: required
+env:
+  global:
+    - K8S_OPS_REPO_BRANCH=master
+    - K8S_OPS_REPO_SLUG=OpenBudget/budgetkey-k8s
+    - DOCKER_IMAGE=budgetkey/budgetkey-postgres
+    - DEPLOY_YAML_UPDATE_FILE=values.auto-updated.yaml
+    - DEPLOY_VALUES_CHART_NAME=postgres
+    - DEPLOY_VALUES_IMAGE_PROP=image
+    - DEPLOY_COMMIT_MESSAGE="automatic update of budgetkey-postgres"
+    - DEPLOY_GIT_EMAIL=budgetkey-deployer@null.void
+    - DEPLOY_GIT_USER=budgetkey-deployer
+    - secure: IGEHqyZGhrO33Age0S2wBQQ+38DC1AIMrfb6QOm0BB/539kogLT6iv8T2T2YR5nMd040LcuDl+OTIHTIuthtQSchVs/+oMPYw5N7QceJGC8eDW22QIzw/Odq1do1PrwNW8QpWX3iESla4nUJ2iPJ2kpP3iYBn2RHVgRM1m+y1lbPXCddYcVQSSgYRIA/Xpe2RENH+l9wpXCf0V1Nc4dhWV0pEgEgmwzdnsTrsOf0UxRgOf2mTBIKvArcN8LnWe8nWG+xw7lLT2VRK8k0erxmOsDGXY1XCd+2JFZKf2LLpzPC+v/HiInNJUpOSUxPRbULzV6JQIlJWLV0G1rmXaUH2+moVbiouYLvh9IU2giptcdKRRG1R3zVyJ4MW9FTndQbKINj69N77+9WWlB4+iWGBJHklGDoZxqWgIMyANY7Aw55meQF7G2izD//6f0XSd7HLLCiKKA0uH2HuxEkciV1ocwsaSca8ZE1hJhOCz1rfF2aFZ/Kl0jsxKGrH/4zuUDIVQpCQoWK1/62UFG3MoGtNwNsXRlU6J8d9QRz0IIUDoyziA5jKUeEGVmYihYHbX8AXJiHjKYrbJZJK0+s3anrkaQVCZPYlArur9zhmmQ8tYK2paQEHoy+VcJTTvoGxlCOyGBI+nm/mM85KApVLAgBC0bKt9bcLkskYbgD485EOIg=
+    - secure: ova/kV3roapDOl+iwJ4GkpQEwTwb/p3adGjgUQiueLOcHZMMHYiE7B+O9n/AIWNqbVfwWSnFFO6xwHahB6VbYTsQ85bxWO4mbX6IFcfSyhE2f5gnfI7C5X52vsBE6IImN4qrvWyFjOQH6UrI+ktzuK8TZR1R+TXar8NAFgG935Sn3MHd/Gm9FLcmSJGkAbJFQCIErprf7W7HYBea07fDq8P959VaInahS7C3IX6u//BJ8evrw3SpAWgnhhWMoOmjRsSbUaug+NLs2n2PaWQDBusGldkUpE7e0HlkN5Cu0M/cP+uGg9BA8YqU+hfIE3l7mNoOzo1RUnPXRsZvrmLKRcNsnKVCwlw9hmEVVEVA/yeazWOe7UaqYL3Htnir5ndwPB7N1fpFGpaUovXyHwULk4wzBwxHLa2nMXpGr49LdI0wUp3pwcTgYFBCM6JcbHme9d5z6ktAF83jJSY9spZy8dqEQtJwdy0BkL15cr9ZUjcaXlPg2tulMYQSVkvlfDgxC699ER2HT9ByLwKbGWbXBIiG4HIct8trelUEsio8p1Lsx4YdHUtMKgI22V4WcLSor5PzYiyMdLXoqMNtaAIZs2KomCsxm5Mu0KzSkUXv9kg5363KmMcJjQzwYa9jdZiX0LA1QJ9YuvUUZvow7eO3lCqPwmGw9ZkqsENubF5D0+o=
+    - secure: jPbP7wT/v8Z8mIkaj7ueiQu/zyx+ZUzU6t1kFVMdGQlt1enMMWfcLWeV/SUJ4Bug93DfjlDeCxki1gxJE+LLUEqOghfLkf0btZaOivsxOMq2nu4TaLDPRQyICKbqW98X66fh9sUxboNcyNYT/ROLp3KfaQKckqr1+IOLYql4pdD7Kue0bFRcX2ZA5WNk71q+oGmvZGroFWtNYOyj0sKlom/krtq/fbJsP7QEq+A7XdCaOYv2C4WU299Xix3DlbVUaYOBUwmSUfe8o9u1ugwIEr3i7t37WRFP3G3NiddTWpEmUUoK74jC4j/B+HMweEfYVGjZw/a/GqwYf+LyHac9jsyg5IvZyASBs5oLNOy6EJvVcqwZoXFy1XLBHEBcXhNXsvFnpYb2v2M8OYBGEJ6EtevOULpEg1GimpiYT9ixx/SD93uXxWACK3k++RZx+CFIITfBd+LYN4lHaTX22nBM8InJt2AVGupDd/uczaMpD0XJKPQHH+z2Slw7ecSQAXVpsAMJ6/IaY3ATRF/Y4ypxgAtjCqRhv6EVUXLIrDDpJQMeL9QKi7+lJF63TRD3+u5YbYB0sgcbG83WimveeECk+VeNWUBap/svzug+NFAnGkVuipnSm/WLv89e4yUQ9g/QIVvAJf72ptPwRHDAn9xMyxuMzxydICeGV5NRqMEkkGE=
+services:
+  - docker
+script:
+  - curl -s https://raw.githubusercontent.com/OpenBudget/budgetkey-k8s/master/apps_travis_script.sh > .travis.sh
+  - bash .travis.sh script
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: bash .travis.sh deploy
+  on:
+    branch: master
